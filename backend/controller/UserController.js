@@ -46,3 +46,41 @@ import createTokenAndSaveCookie from "../jwt/generateToken.js"
    }
 
 }
+
+
+export const login=async(req,res)=>{
+
+
+  try{
+     const {email,password}=req.body;
+
+     const user= await User.findOne({email})
+
+     const isMatch=await bcrypt.compare(password,user.password)
+
+
+
+     if(!user|| !isMatch){
+      return res.status(400).json({error:"User Entered Credentials Wrong"})
+     }
+        
+
+     createTokenAndSaveCookie(user._id,res);
+ 
+     res.status(200).json({message : "User Logged In Successfully",
+      user: {
+      _id:user._id,
+      "name":user.name,
+      email:user.email,
+     },
+    })
+
+  }
+  catch(error){
+
+    res.status(500).json({message:"somthing went wrong"})
+
+    console.log(error.message)
+
+  }
+}

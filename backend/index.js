@@ -32,6 +32,8 @@ catch(error)
 
 app.use("/user",UserRoute)
 
+
+
 app.get('/', (req, res) => {
   res.send('Hello Chit Chat!')
 })
