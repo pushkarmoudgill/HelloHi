@@ -1,4 +1,6 @@
 import User from "../model/user.js"
+import bcrypt from "bcryptjs"
+import createTokenAndSaveCookie from "../jwt/generateToken.js"
 
 
   export const signup=async (req,res)=>{
@@ -9,6 +11,10 @@ import User from "../model/user.js"
         return res.status(400).json({error:"Password do not match"})
     }
      
+
+    /// hashing password
+    const hashPassword=await bcrypt.hash(password,10)
+
     const user= await User.findOne({email});
 
     if(user){
@@ -19,12 +25,19 @@ import User from "../model/user.js"
     const newUser=await new User({
         name,
         email,
-        password,
-        confirmPassword,
+       password: hashPassword,
+       // confirmPassword,
     });
 
   await  newUser.save();
+
+  if (newUser){
+    createTokenAndSaveCookie(newUser._id,res);
+    
     res.status(201).json({message : "User created Successfully"})
+
+  }
+    
    }
    catch(error){
    res.status(500).json({message:"somthing went wrong"})

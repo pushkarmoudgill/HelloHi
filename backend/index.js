@@ -21,12 +21,12 @@ const PORT =process.env.PORT;
 const MONGO_URI=process.env.MONGO_URL
 
 try{
-    mongoose.connect(MONGO_URI)
+     mongoose.connect(MONGO_URI)
     console.log("Connected to DB")
 }
 catch(error)
 {
-   console.log(error)
+   console.log(error.message)
 }
 
 
