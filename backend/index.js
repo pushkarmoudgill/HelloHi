@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import mongoose from 'mongoose'
 
 import UserRoute from "./routes/UserRoute.js";
+import cors from "cors"
  const app=express();
 
 dotenv.config();
@@ -10,6 +11,7 @@ dotenv.config();
 
 //middleware
 app.use(express.json())
+app.use(cors());
 
 const PORT =process.env.PORT;
 
