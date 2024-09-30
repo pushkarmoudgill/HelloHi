@@ -34,7 +34,13 @@ import createTokenAndSaveCookie from "../jwt/generateToken.js"
   if (newUser){
     createTokenAndSaveCookie(newUser._id,res);
     
-    res.status(201).json({message : "User created Successfully"})
+    res.status(201).json({message : "User created Successfully",
+      user:{
+        _id: newUser._id,
+        name: newUser.fullname,
+        email:newUser.email,
+      },
+    })
 
   }
     

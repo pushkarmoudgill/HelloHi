@@ -30,11 +30,16 @@ import axios from "axios"
       //  console.log(userInfo)
       axios.post("http://localhost:3000/user/signup",userInfo)
       .then((response)=>{
-        console.log(response.data)
+        if(response.data){
         alert("Sign up Succesfully!")
+        }
+        localStorage.setItem("ChatApp",JSON.stringify(response.data))
       })
       .catch((error)=>{
-        console.log(error)
+      //  console.log(error)
+      if(error.response){
+        alert("Error: "+error.response.data.error)
+      }
       })
       }
   return (

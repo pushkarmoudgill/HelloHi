@@ -1,11 +1,48 @@
 import React from 'react'
-
+import { useForm } from "react-hook-form"
+import axios from "axios"
 
  function Login() {
+
+  const {
+    register,
+    handleSubmit,
+  
+    formState: { errors },
+  } = useForm()
+
+
+  const onSubmit = (data) => {
+    const userInfo={
+        
+email: data.Email,
+password: data.password,
+
+
+    }
+  //  console.log(userInfo)
+  axios.post("http://localhost:3000/user/login",userInfo)
+  .then((response)=>{
+    if(response.data){
+    alert("Login Succesfully!")
+    }
+    localStorage.setItem("ChatApp",JSON.stringify(response.data))
+  })
+  .catch((error)=>{
+  //  console.log(error)
+  if(error.response){
+    alert("Error: "+error.response.data.error)
+  }
+  })
+  }
+
+
   return (
    <>
    <div className='flex h-screen items-center justify-center bg-gray-200'>
-    <form action="" className='border border-green-400 px-6 py-2 round-md space-y-3 w-96'>
+    <form 
+    onSubmit={handleSubmit(onSubmit)}
+    className='border border-green-400 px-6 py-2 round-md space-y-3 w-96'>
         <h1 className='text-2xl text-center'>HELLO <span className='text-green-500 font-semibold'>HI</span></h1>
         <h2 className='text-2xl font-bold'>Login</h2>
         <br />
@@ -24,8 +61,11 @@ import React from 'react'
     <path
       d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
   </svg>
-  <input type="text" className="grow" placeholder="Email" />
+  <input type="Email" className="grow" placeholder="Email"
+   {...register("Email", { required: true })}  />
 </label>
+{errors.Email && <span>This field is required</span>}
+
 
                  {/* {Password} */}
 
@@ -41,8 +81,13 @@ import React from 'react'
       d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
       clipRule="evenodd" />
   </svg>
-  <input type="password" className="grow" placeholder="password" />
+  <input type="password" className="grow" placeholder="password" 
+    {...register("password", { required: true })} 
+
+  />
 </label>
+{errors.password && <span>This field is required</span>}
+
  
 
 
@@ -55,7 +100,7 @@ import React from 'react'
     </span>
 
     </p>
-    <input type=" submit" value="Login" className='bg-green-500 text-white px-1 cursor-pointer rounded-lg w-14'></input>
+    <input type="submit" value="Login" className='bg-green-500 text-white px-1 cursor-pointer rounded-lg w-14'/>
   </div>
 
 
