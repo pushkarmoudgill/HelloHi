@@ -8,7 +8,7 @@ import createTokenAndSaveCookie from "../jwt/generateToken.js"
     const {name,email,password,confirmPassword}=req.body;
 
     if(password !==confirmPassword){
-        return res.status(400).json({error:"Password do not match"})
+        return res.status(400).json({error:"Password do not match!"})
     }
      
 
@@ -18,7 +18,7 @@ import createTokenAndSaveCookie from "../jwt/generateToken.js"
     const user= await User.findOne({email});
 
     if(user){
-        return res.status(400).json({error:"User Already Exists"})
+        return res.status(400).json({error:"User Already Exists!"})
     }
       
 
@@ -34,7 +34,7 @@ import createTokenAndSaveCookie from "../jwt/generateToken.js"
   if (newUser){
     createTokenAndSaveCookie(newUser._id,res);
     
-    res.status(201).json({message : "User created Successfully",
+    res.status(201).json({message : "User created Successfully!",
       user:{
         _id: newUser._id,
         name: newUser.fullname,
@@ -46,7 +46,7 @@ import createTokenAndSaveCookie from "../jwt/generateToken.js"
     
    }
    catch(error){
-   res.status(500).json({message:"somthing went wrong"})
+   res.status(500).json({message:"somthing went wrong!"})
 
    console.log(error.message)
    }
@@ -67,13 +67,13 @@ export const login=async(req,res)=>{
 
 
      if(!user|| !isMatch){
-      return res.status(400).json({error:"User Entered Credentials Wrong"})
+      return res.status(400).json({error:"User Entered Credentials Wrong!"})
      }
         
 
      createTokenAndSaveCookie(user._id,res);
  
-     res.status(200).json({message : "User Logged In Successfully",
+     res.status(200).json({message : "User Logged In Successfully!",
       user: {
       _id:user._id,
       "name":user.name,
@@ -84,7 +84,7 @@ export const login=async(req,res)=>{
   }
   catch(error){
 
-    res.status(500).json({message:"somthing went wrong"})
+    res.status(500).json({message:"somthing went wrong!"})
 
     console.log(error.message)
 
