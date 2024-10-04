@@ -3,6 +3,8 @@ import dotenv from "dotenv"
 import mongoose from 'mongoose'
 
 import UserRoute from "./routes/UserRoute.js";
+import MessageRoute from "./routes/messageRoute.js";
+
 import cors from "cors"
 import cookieParser from "cookie-parser";
  const app=express();
@@ -35,6 +37,7 @@ catch(error)
 
 
 app.use("/user",UserRoute)
+app.use("/message",MessageRoute)
 
 
 
