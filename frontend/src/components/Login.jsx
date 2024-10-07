@@ -1,6 +1,7 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
 import axios from "axios"
+import { Link } from 'react-router-dom'
 
  function Login() {
 
@@ -95,9 +96,9 @@ password: data.password,
   {/* {Text & Button} */}
 
   <div className='flex justify-between'>
-    <p>New User?<span className='text-blue-500 underline cursor-pointer'>
+    <p>New User?<Link  to='/signup' className='text-blue-500 underline cursor-pointer'>
         Signup
-    </span>
+    </Link>
 
     </p>
     <input type="submit" value="Login" className='bg-green-500 text-white px-1 cursor-pointer rounded-lg w-14'/>

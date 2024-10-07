@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from "react-hook-form"
 import axios from "axios"
 import { useAuth } from '../context/Authprovider'
+import { Link } from 'react-router-dom'
 
  function  Signup() {
  // const [authUser,setAuthUser]=useAuth()
@@ -136,9 +137,9 @@ import { useAuth } from '../context/Authprovider'
   {/* {Text & Button} */}
 
   <div className='flex justify-between'>
-    <p>Have an account?<span className='text-blue-500 underline cursor-pointer'>
+    <p>Have an account?<Link to="/login" className='text-blue-500 underline cursor-pointer'>
         Login
-    </span>
+    </Link>
 
     </p>
     <input type="submit" value="Signup" className='bg-green-500 text-white px-1 cursor-pointer rounded-lg w-14'/>
