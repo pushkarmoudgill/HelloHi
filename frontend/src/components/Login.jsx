@@ -22,7 +22,7 @@ password: data.password,
 
     }
   //  console.log(userInfo)
-  axios.post("http://localhost:3000/user/login",userInfo)
+  axios.post("/api/user/login",userInfo)
   .then((response)=>{
     if(response.data){
     alert("Login Succesfully!")

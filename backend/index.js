@@ -36,7 +36,7 @@ catch(error)
 }
 
 
-app.use("/user",UserRoute)
+app.use("/api/user",UserRoute)
 app.use("/message",MessageRoute)
 
 

@@ -9,7 +9,7 @@ const token=jwt.sign({userId},process.env.JWTTOKEN,{
 })
 
 res.cookie("jwt",token,{
-    httpOnly:true,
+   httpOnly:true,
     secure:true,
     sameSite:"strict"
 });
