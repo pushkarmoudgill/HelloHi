@@ -12,17 +12,14 @@ export default function Users() {
       Messages
     </h1>
     <div className='flex-1 overflow-y-auto' style={{maxHeight:'calc(84vh - 13vh)'}}>
-        <User/>
-        <User/>
-        <User/>
-        <User/>
-        <User/>
-        <User/>
-        <User/>
-        <User/>
-        <User/>
-        <User/> <User/> <User/>
+        
+          {allUsers.map((user,index)=>(
 
+            <User key={index} user={user}/>
+
+          ))
+
+          }
     </div>
    
     </div>

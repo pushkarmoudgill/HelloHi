@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function User() {
+export default function User({user}) {
   return (
     <div>
        <div className='flex space-x-4 px-6 py-3 hover:bg-green-700 duration-300'>
@@ -10,8 +10,8 @@ export default function User() {
   </div>
 </div>
      <div>
-        <h1 className='font-semibold'>Pushkar</h1>
-        <span>@gmail.com</span>
+        <h1 className='font-semibold'>{user.name}</h1>
+        <span>{user.email}</span>
      </div>
     </div>
     </div>
