@@ -111,3 +111,21 @@ export const allUsers=async(req,res) =>{
 
   }
 };
+
+
+export const logout=async(req,res)=>{
+
+  try{
+       res.cookie("jwt","",{maxage:0});
+       res.status(200).json({message:"Logout Successfully!"})
+  }
+  catch(error){
+
+     console.log("Error in logout Controller");
+     res.status(200).json({message:"Internel server error"})
+
+  }
+
+
+
+}
