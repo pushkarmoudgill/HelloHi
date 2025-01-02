@@ -5,6 +5,9 @@ import Left from './home/Leftpart/Left'
 import Right from './home/Rightpart/Right'
 import Signup from './components/Signup'
 import Login from './components/Login'
+import Loading from './components/Loading.jsx'
+
+
 import { useAuth } from './context/Authprovider.jsx'
 import {Routes,Route, BrowserRouter, Navigate} from "react-router-dom"
 
@@ -25,7 +28,7 @@ function App() {
     <BrowserRouter>
 
 
-    <Routes>
+     <Routes>
       <Route path="/" element={
         auth ?(
          <div className='flex h-screen'>
@@ -43,7 +46,9 @@ function App() {
  <Route path="/login" element={  <Login/> }/>
 
     
-    </Routes>
+    </Routes> 
+
+    
     </BrowserRouter>
   )
 }

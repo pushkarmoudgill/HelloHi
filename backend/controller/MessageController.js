@@ -63,8 +63,10 @@ export const getMessage =async (req,res)=>{
         if(!conversation){
           return  res.status(200).json([])
         }
-
+        console.log("CONVV",conversation)
         const messages=conversation.messages;
+
+
 
       //  console.log("CONVERS==",conversation)
         return  res.status(200).json(
