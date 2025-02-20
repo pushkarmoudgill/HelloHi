@@ -39,7 +39,7 @@ export const sendMessage=async(req,res)=>{
         await Promise.all([convsersation.save(),newMessage.save()])
 
         res.status(200).json({
-            message:"Message sent sucessfully",
+           // message:"Message sent sucessfully",
             newMessage
         });
     }
