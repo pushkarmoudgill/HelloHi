@@ -7,7 +7,7 @@ import MessageRoute from "./routes/messageRoute.js";
 
 import cors from "cors"
 import cookieParser from "cookie-parser";
- const app=express();
+import { app,server } from "./socket.io/server.js";
 
 dotenv.config();
  
@@ -45,6 +45,6 @@ app.get('/', (req, res) => {
   res.send('Hello Chit Chat!')
 })
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(` app listening on port ${PORT}`)
 })
