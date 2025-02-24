@@ -95,7 +95,7 @@ export const login=async(req,res)=>{
 export const allUsers=async(req,res) =>{
   try{
 
-    console.log("req",req.user)
+    // console.log("req",req.user)
     const loggedInUser=req.user._id;
 
    
