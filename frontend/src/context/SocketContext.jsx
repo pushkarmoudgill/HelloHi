@@ -19,7 +19,7 @@ export const SocketProvider =({children})=>{
         if(authUser){
             const socket=io("http://localhost:3000",{
             query:{
-                 userdId:user.user._id  
+                 userId:user.user._id  
             },
         })
         setSocket(socket)
