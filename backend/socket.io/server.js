@@ -33,6 +33,9 @@ io.on("connection",(socket)=>{
 
     socket.on("disconnect",()=>{
         console.log("a user disconnected",socket.id)
+        delete users[UserId]
+        io.emit("getOnlineUser",Object.keys(users));
+
     })
 })
 

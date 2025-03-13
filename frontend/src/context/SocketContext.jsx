@@ -6,6 +6,7 @@ const socketContext=createContext();
 export const SocketProvider =({children})=>{
 
     const [socket,setSocket]=useState(null)
+    const [onlineUsers,setOnlineUsers]=useState([])
     const authUser=localStorage.getItem('ChatApp');
 
     // console.log("Sockettt",authUser)
@@ -23,11 +24,20 @@ export const SocketProvider =({children})=>{
             },
         })
         setSocket(socket)
+         socket.on("getOnlineUser",(users)=>{
+          setOnlineUsers(users)
+         })
+           return ()=>socket.close()
+        }else{
+            if(socket){
+                socket.close();
+                setSocket(null)
+            }
         }
     },[authUser])
 
     return(
-        <socketContext.Provider value={{socket}}>
+        <socketContext.Provider value={{socket,onlineUsers}}>
             {children}
         </socketContext.Provider>
     )
